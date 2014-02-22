@@ -1,0 +1,151 @@
+<h1>angular-seed — the seed for AngularJS apps</h1>
+
+<p>This project is an application skeleton for a typical <a href="http://angularjs.org/">AngularJS</a> web app.
+You can use it to quickly bootstrap your angular webapp projects and dev environment for these
+projects.</p>
+
+<p>The seed contains AngularJS libraries, test libraries and a bunch of scripts all preconfigured for
+instant web development gratification. Just clone the repo (or download the zip/tarball), start up
+our (or yours) webserver and you are ready to develop and test your application.</p>
+
+<p>The seed app doesn't do much, just shows how to wire two controllers and views together. You can
+check it out by opening app/index.html in your browser (might not work file <code>file://</code> scheme in
+certain browsers, see note below).</p>
+
+<p><em>Note: While angular is client-side-only technology and it's possible to create angular webapps that
+don't require a backend server at all, we recommend hosting the project files using a local
+webserver during development to avoid issues with security restrictions (sandbox) in browsers. The
+sandbox implementation varies between browsers, but quite often prevents things like cookies, xhr,
+etc to function properly when an html page is opened via <code>file://</code> scheme instead of <code>http://</code>.</em></p>
+
+<h2>How to use angular-seed</h2>
+
+<p>Clone the angular-seed repository and start hacking...</p>
+
+<h3>Running the app during development</h3>
+
+<p>You can pick one of these options:</p>
+
+<ul>
+<li>serve this repository with your webserver</li>
+<li>install node.js and run <code>scripts/web-server.js</code></li>
+</ul>
+
+<p>Then navigate your browser to <code>http://localhost:&lt;port&gt;/app/index.html</code> to see the app running in
+your browser.</p>
+
+<h3>Running the app in production</h3>
+
+<p>This really depends on how complex is your app and the overall infrastructure of your system, but
+the general rule is that all you need in production are all the files under the <code>app/</code> directory.
+Everything else should be omitted.</p>
+
+<p>Angular apps are really just a bunch of static html, css and js files that just need to be hosted
+somewhere, where they can be accessed by browsers.</p>
+
+<p>If your Angular app is talking to the backend server via xhr or other means, you need to figure
+out what is the best way to host the static files to comply with the same origin policy if
+applicable. Usually this is done by hosting the files by the backend server or through
+reverse-proxying the backend server(s) and a webserver(s).</p>
+
+<h3>Running unit tests</h3>
+
+<p>We recommend using <a href="http://pivotal.github.com/jasmine/">jasmine</a> and
+<a href="http://karma-runner.github.io">Karma</a> for your unit tests/specs, but you are free
+to use whatever works for you.</p>
+
+<p>Requires <a href="http://nodejs.org/">node.js</a>, Karma (<code>sudo npm install -g karma</code>) and a local
+or remote browser.</p>
+
+<ul>
+<li>start <code>scripts/test.sh</code> (on windows: <code>scripts\test.bat</code>)
+<ul>
+<li>a browser will start and connect to the Karma server (Chrome is default browser, others can be 
+captured by loading the same url as the one in Chrome or by changing the <code>config/karma.conf.js</code> file)</li>
+</ul></li>
+<li>to run or re-run tests just change any of your source or test javascript files</li>
+</ul>
+
+<h3>End to end testing</h3>
+
+<p>We recommend using <a href="https://github.com/angular/protractor">protractor</a> for end-to-end tests. It
+uses native events and has special features for Angular applications.</p>
+
+<p>Requires a webserver, node.js + <code>./scripts/web-server.js</code> or your backend server that hosts the angular static files.</p>
+
+<ul>
+<li>create your end-to-end tests in <code>test/e2e/scenarios.js</code></li>
+<li>serve your project directory with your http/backend server or node.js + <code>scripts/web-server.js</code></li>
+<li>to run:
+<ul>
+<li>run the tests from console with <a href="https://github.com/angular/protractor">Protractor</a> via
+<code>scripts/e2e-test.sh</code> (on windows: <code>scripts\e2e-test.bat</code>)</li>
+</ul></li>
+</ul>
+
+<h3>Continuous Integration</h3>
+
+<p>CloudBees have provided a CI/deployment setup:</p>
+
+<p><a href="https://grandcentral.cloudbees.com/?CB_clickstart=https://raw.github.com/CloudBees-community/angular-js-clickstart/master/clickstart.json"><img src="https://d3ko533tu1ozfq.cloudfront.net/clickstart/deployInstantly.png"/></a></p>
+
+<p>If you run this, you will get a cloned version of this repo to start working on in a private git repo, 
+along with a CI service (in Jenkins) hosted that will run unit and end to end tests in both Firefox and Chrome.</p>
+
+<h3>Receiving updates from upstream</h3>
+
+<p>When we upgrade angular-seed's repo with newer angular or testing library code, you can just
+fetch the changes and merge them into your project with git.</p>
+
+<h2>Directory Layout</h2>
+
+<pre><code>app/                --&gt; all of the files to be used in production
+  css/              --&gt; css files
+    app.css         --&gt; default stylesheet
+  img/              --&gt; image files
+  index.html        --&gt; app layout file (the main html template file of the app)
+  index-async.html  --&gt; just like index.html, but loads js files asynchronously
+  js/               --&gt; javascript files
+    app.js          --&gt; application
+    controllers.js  --&gt; application controllers
+    directives.js   --&gt; application directives
+    filters.js      --&gt; custom angular filters
+    services.js     --&gt; custom angular services
+  lib/              --&gt; angular and 3rd party javascript libraries
+    angular/
+      angular.js        --&gt; the latest angular js
+      angular.min.js    --&gt; the latest minified angular js
+      angular-*.js      --&gt; angular add-on modules
+      version.txt       --&gt; version number
+  partials/             --&gt; angular view partials (partial html templates)
+    partial1.html
+    partial2.html
+
+config/karma.conf.js        --&gt; config file for running unit tests with Karma
+config/protractor-conf.js    --&gt; config file for running e2e tests with Protractor
+
+scripts/            --&gt; handy shell/js/ruby scripts
+  e2e-test.sh       --&gt; runs end-to-end tests with Karma (*nix)
+  e2e-test.bat      --&gt; runs end-to-end tests with Karma (windows)
+  test.bat          --&gt; autotests unit tests with Karma (windows)
+  test.sh           --&gt; autotests unit tests with Karma (*nix)
+  web-server.js     --&gt; simple development webserver based on node.js
+
+test/               --&gt; test source files and libraries
+  e2e/              --&gt;
+    scenarios.js    --&gt; end-to-end specs
+  lib/
+    angular/                --&gt; angular testing libraries
+      angular-mocks.js      --&gt; mocks that replace certain angular services in tests
+      angular-scenario.js   --&gt; angular's scenario (end-to-end) test runner library
+      version.txt           --&gt; version file
+  unit/                     --&gt; unit level specs/tests
+    controllersSpec.js      --&gt; specs for controllers
+    directivessSpec.js      --&gt; specs for directives
+    filtersSpec.js          --&gt; specs for filters
+    servicesSpec.js         --&gt; specs for services
+</code></pre>
+
+<h2>Contact</h2>
+
+<p>For more information on AngularJS please check out http://angularjs.org/</p>
